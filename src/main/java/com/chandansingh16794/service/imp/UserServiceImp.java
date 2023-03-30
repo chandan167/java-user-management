@@ -55,7 +55,7 @@ public class UserServiceImp implements UserService {
         Optional<User> checkEmail = this.userRepository.findByEmailAndIdNot(userDto.getEmail(), userDto.getId());
         if(checkEmail.isPresent()) throw new HttpException("Email already exist", HttpStatus.BAD_REQUEST, "USER_EMAIL_EXIST");
 
-        Optional<User> checkPhone = this.userRepository.findByEmailAndIdNot(userDto.getPhone(), userDto.getId());
+        Optional<User> checkPhone = this.userRepository.findByPhoneAndIdNot(userDto.getPhone(), userDto.getId());
         if(checkPhone.isPresent()) throw new HttpException("Phone already exist", HttpStatus.BAD_REQUEST, "PHONE_EMAIL_EXIST");
 
         Optional<User> optionalUser = this.userRepository.findById(userDto.getId());
